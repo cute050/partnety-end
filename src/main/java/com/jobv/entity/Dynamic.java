@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.annotation.TableLogic;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import cn.hutool.core.annotation.Alias;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -55,12 +56,14 @@ private static final long serialVersionUID = 1L;
     @ApiModelProperty("创建时间")
     @Alias("创建时间")
     @TableField(fill = FieldFill.INSERT)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private LocalDateTime createTime;
 
     // 更新时间
     @ApiModelProperty("更新时间")
     @Alias("更新时间")
     @TableField(fill = FieldFill.INSERT_UPDATE)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private LocalDateTime updateTime;
 
     // 用户标识

@@ -34,18 +34,25 @@ public class WebController {
 
     @PostMapping("/login")
     @ApiOperation(value = "登录接口")
-    public Result login(@RequestBody User user){
+    public Result login(@RequestBody User user) {
         User res = userService.login(user);
         return Result.success(res);
     }
 
     @PostMapping("/register")
     @ApiOperation(value = "注册接口")
-    public Result register(@RequestBody User user){
+    public Result register(@RequestBody User user) {
         User res = userService.register(user);
         return Result.success(res);
     }
 
+
+    @GetMapping("/email")
+    @ApiOperation(value = "邮箱验证接口")
+    public Result sendEmail(@RequestParam(value = "email") String email, @RequestParam(value = "type") String type) {
+        userService.sendEmail(email, type);
+        return Result.success();
+    }
 
 
 }
